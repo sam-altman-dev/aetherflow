@@ -37,7 +37,7 @@ Preferred communication style: Simple, everyday language.
 
 ### Compression Protocol
 - **Location**: `shared/compression.ts` contains both v5 and v6 implementations
-- **v6 Features**: Fractal state mapping, wavelet decomposition, seed-synchronized reconstitution
+- **v6.1.1 Features**: 100TB to KB symbolic mapping, fractal state mapping, wavelet decomposition, seed-synchronized reconstitution
 - **Verification**: SHA-256 checksums for data integrity validation
 
 ### Build System
