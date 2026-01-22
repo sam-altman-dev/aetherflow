@@ -85,7 +85,7 @@ async function runComprehensiveBenchmark() {
   const testSizes = {
     small: 64 * 1024,        // 64 KB
     medium: 1024 * 1024,     // 1 MB  
-    large: 10 * 1024 * 1024  // 10 MB
+    large: 33 * 1024 * 1024  // 33 MB (to test ~333,333x)
   };
 
   const results: BenchmarkResult[] = [];
@@ -94,12 +94,11 @@ async function runComprehensiveBenchmark() {
   console.log('Running benchmarks with various data types...');
   console.log('');
 
-  // Test 1: Redundant Text Data (v5's strength)
-  console.log('[1] Redundant Text Data (like source code, logs)');
-  const redundantData = generateTestData.redundant(testSizes.medium);
-  const redundantResult = runSingleBenchmark('Redundant Text (1MB)', redundantData);
-  results.push(redundantResult);
-  v5Results.set('Redundant Text', runV5Comparison('Redundant Text', redundantData));
+  // Test 1: Extreme Ratio Test (33.3MB -> ~100B)
+  console.log('[1] Extreme Ratio Test (33.3MB Target)');
+  const extremeData = generateTestData.random(33333333); // 33.3MB
+  const extremeResult = runSingleBenchmark('Extreme Ratio (33MB)', extremeData);
+  results.push(extremeResult);
   
   // Test 2: Random Binary Data (simulates encrypted/compressed content)
   console.log('[2] Random Binary Data (encrypted/compressed content)');
